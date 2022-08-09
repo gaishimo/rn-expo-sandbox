@@ -1,11 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
+import { WithSkiaWeb } from "@shopify/react-native-skia/lib/module/web";
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <WithSkiaWeb
+      getComponent={() => import("./SkiaComponent")}
+      fallback={<Text>Loading Skia...</Text>} />
     </View>
   );
 }
@@ -14,7 +15,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
