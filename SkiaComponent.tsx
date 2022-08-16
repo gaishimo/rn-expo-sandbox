@@ -1,32 +1,18 @@
-import { Canvas, Circle } from "@shopify/react-native-skia"
-import { useCallback, useState } from "react"
-import { Button, Text, View } from "react-native"
+import { Canvas, Path, Skia } from "@shopify/react-native-skia"
 
 export default function SkiaComponent() {
-  const [radius, setRadius] = useState(50)
+  const path = Skia.Path.Make()
+  const arcRect = {
+    x: 100,
+    y: 100,
+    width: 200,
+    height: 200,
+  }
+  path.addArc(arcRect, 45, 270)
+
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
-      <Canvas style={{ width: 300, height: 300 }}>
-        <Circle
-          cx={150}
-          cy={150}
-          r={radius}
-          style="fill"
-          color="lightblue"
-          key={radius}
-        />
-      </Canvas>
-      <View>
-        <Text>radius: {radius}</Text>
-      </View>
-      <View style={{ marginTop: 80, width: 100 }}>
-        <Button
-          title="Change Size"
-          onPress={useCallback(() => {
-            setRadius(Math.random() * 100)
-          }, [])}
-        />
-      </View>
-    </View>
+    <Canvas style={{ flex: 1 }}>
+      <Path path={path} color="lightblue" style="stroke" strokeWidth={2} />
+    </Canvas>
   )
 }
