@@ -3,6 +3,7 @@
     "name": "rn-skia-web",
     "slug": "rn-skia-web",
     "version": "1.0.0",
+    "scheme": "myapp",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
